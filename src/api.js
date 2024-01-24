@@ -1,21 +1,15 @@
-//Set up express
 const serverless = require(`serverless-http`)
 const express = require(`express`);
 const {Router} = require(`express`)
 const api = express();
 const router = Router();
-//Include the file system functions
 const fs =require(`fs`);
-//Include and set the hbs (handlebars) view engine
 const hbs = require(`hbs`)
+
 api.set(`view engine`,`hbs`)
-//register the location of partial snippets for the view engine
 hbs.registerPartials(__dirname + `/views/partials`,(err)=>{})
-//Uses extended url capability
 api.use(express.urlencoded({extended:true}));
-//add the static asset folder
 // app.use(express.static(`${__dirname}/public`));
-//allow express json functionality
 api.use(express.json())
 
 //path to the data folder
@@ -73,9 +67,9 @@ api.get('*', (req, res)=>{
 
 //Runs the server when npm app.js is run in the terminal
 
-let port = process.env.PORT || 81;
-api.listen(port, ()=>{
-    console.log(`Server Running at localhost:${port}`)
-});
+// let port = process.env.PORT || 81;
+// api.listen(port, ()=>{
+//     console.log(`Server Running at localhost:${port}`)
+// });
 
 module.exports.handler = serverless(api);
