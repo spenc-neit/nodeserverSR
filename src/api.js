@@ -14,7 +14,7 @@ hbs.registerPartials(__dirname + `/views/partials`,(err)=>{})
 //Uses extended url capability
 api.use(express.urlencoded({extended:true}));
 //add the static asset folder
-// app.use(express.static(`${__dirname}/public`));
+app.use(express.static(`${__dirname}/public`));
 //allow express json functionality
 api.use(express.json())
 
